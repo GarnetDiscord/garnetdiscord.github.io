@@ -18,6 +18,7 @@
       --muted: #6E6064;
       --garnet: #8E1B30;
       --garnet-hi: #B13049;
+      --tint: #F6E4E8;
       --line: #E0D2D5;
       --on-garnet: #FFF;
       --code-bg: #2B2326;
@@ -35,6 +36,7 @@
         --muted: #B49CA2;
         --garnet: #e03050;
         --garnet-hi: #da3651;
+        --tint: #3A1F27;
         --line: #3B2A30;
         --on-garnet: #1C1316;
         --code-bg: #120C0E;
@@ -49,6 +51,7 @@
       --muted: #B49CA2;
       --garnet: #e03050;
       --garnet-hi: #da3651;
+      --tint: #3A1F27;
       --line: #3B2A30;
       --on-garnet: #1C1316;
       --code-bg: #120C0E;
@@ -77,9 +80,10 @@
     }
 
     h1,
-    h2 {
+    h2,
+    h3 {
       font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      line-height: 1.05;
+      line-height: 1.1;
       margin: 0
     }
 
@@ -101,6 +105,18 @@
       grid-template-columns: 1.2fr .8fr;
       gap: 2.5rem;
       align-items: center
+    }
+
+    .label {
+      display: inline-block;
+      color: var(--garnet);
+      background: var(--tint);
+      border-radius: 999px;
+      padding: .3rem .8rem;
+      margin: 0 0 1.1rem;
+      font: 700 .78rem/1.2 "Bricolage Grotesque", sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase
     }
 
     .policy-links {
@@ -134,7 +150,8 @@
     h1 {
       font-size: clamp(2.6rem, 7vw, 4.75rem);
       font-weight: 800;
-      letter-spacing: -.02em
+      letter-spacing: -.02em;
+      line-height: 1.05
     }
 
     .lede {
@@ -207,10 +224,6 @@
       padding-top: 2rem
     }
 
-    #run {
-      margin-top: 1.5rem
-    }
-
     h2 {
       font-size: 1.9rem;
       font-weight: 700;
@@ -221,9 +234,120 @@
       max-width: 40rem
     }
 
+    .section-intro {
+      color: var(--muted);
+      margin: 0 0 1.75rem
+    }
+
+    /* Feature cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: .6rem;
+      padding: 1.25rem
+    }
+
+    .card .icon {
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: .6rem;
+      background: var(--tint);
+      color: var(--garnet);
+      margin-bottom: .9rem
+    }
+
+    .card .icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: .35rem
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem
+    }
+
+    /* Steps */
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: step;
+      display: grid;
+      gap: 1.75rem
+    }
+
+    .step {
+      counter-increment: step;
+      position: relative;
+      padding-left: 3.5rem
+    }
+
+    .step::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--garnet);
+      color: var(--on-garnet);
+      font: 800 1.15rem "Bricolage Grotesque", sans-serif
+    }
+
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 1.2rem;
+      top: 2.75rem;
+      bottom: -1.5rem;
+      width: 2px;
+      background: var(--line)
+    }
+
+    .step h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: .3rem 0 .4rem
+    }
+
+    .step p {
+      margin: 0 0 .8rem;
+      color: var(--muted)
+    }
+
+    .step a {
+      color: var(--garnet)
+    }
+
     .code {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 1rem;
       background: var(--code-bg);
@@ -231,8 +355,18 @@
       border-radius: .4rem;
       padding: .9rem 1rem;
       max-width: 40rem;
-      font: .98rem ui-monospace, Menlo, Consolas, monospace;
+      font: .98rem/1.55 ui-monospace, Menlo, Consolas, monospace;
       overflow-x: auto
+    }
+
+    .code pre {
+      margin: 0;
+      font: inherit;
+      white-space: pre
+    }
+
+    .code .c {
+      color: #A8939A
     }
 
     .copy {
@@ -244,6 +378,12 @@
       font: 600 .85rem "Source Sans 3", sans-serif;
       cursor: pointer;
       flex: none
+    }
+
+    .note {
+      margin: .8rem 0 0;
+      font-size: .95rem;
+      color: var(--muted)
     }
 
     dl {
@@ -260,12 +400,8 @@
 
     dd {
       margin: 0;
-      color: var(--muted)
-    }
-
-    .tbd {
       color: var(--muted);
-      font-style: italic
+      overflow-wrap: anywhere
     }
 
     footer {
@@ -297,10 +433,10 @@
 
     <div class="hero">
       <div>
+        <p class="label">Self-hosted Discord bot engine</p>
         <h1>The Discord bot engine.</h1>
-        <p class="lede">Garnet is a Discord bot engine you run yourself. Download it, add your bot token, and switch
-          features on or off in one config file. Tickets, role panels, logging, welcomer, moderation and embeds are
-          included.</p>
+        <p class="lede">Run your own Discord bot. Download it, add your bot token, and switch features on or off in one
+          config file.</p>
         <div class="hero-actions">
           <a class="btn" id="dl" href="#" target="_blank" rel="noopener" aria-disabled="true">Download main.jar</a>
           <a class="btn btn-secondary" href="https://dsc.gg/garnetbot" target="_blank" rel="noopener">Join our
@@ -320,11 +456,84 @@
         rel="noopener">Security Policy</a>
     </nav>
 
+    <section id="features">
+      <h2>What's included</h2>
+      <p class="section-intro">Every feature can be turned on or off in your config file.</p>
+      <ul class="cards">
+        <li class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>
+          </div>
+          <h3>Tickets</h3>
+          <p>Let members open private support channels, with limits and delete confirmation.</p>
+        </li>
+        <li class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.42 0l7.58-7.58a1 1 0 0 0 0-1.42Z"/><circle cx="7" cy="7" r="1"/></svg>
+          </div>
+          <h3>Role panels</h3>
+          <p>Members pick their own roles from a panel you build right inside Discord.</p>
+        </li>
+        <li class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          </div>
+          <h3>Logging</h3>
+          <p>Keep a record of joins, edits, deletions and other server activity.</p>
+        </li>
+        <li class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+          </div>
+          <h3>Welcomer</h3>
+          <p>Greet new members with a message of your own.</p>
+        </li>
+        <li class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <h3>Moderation</h3>
+          <p>Keep your server in order with the usual tools for dealing with rule-breakers.</p>
+        </li>
+        <li class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Embeds</h3>
+          <p>Send polished, formatted messages and announcements.</p>
+        </li>
+      </ul>
+    </section>
+
     <section id="run">
-      <h2>Run it</h2>
-      <p>Download the file, then start it from a terminal in the same folder.</p>
-      <div class="code"><code id="cmd">java -jar main.jar</code><button class="copy" id="copy"
-          type="button">Copy</button></div>
+      <h2>Install in three steps</h2>
+      <ol class="steps">
+        <li class="step">
+          <h3>Download and check Java</h3>
+          <p>Download <strong>main.jar</strong> into its own folder. Garnet needs Java 21 or newer, so check your
+            version first.</p>
+          <div class="code"><pre><code>java -version</code></pre><button class="copy" type="button"
+              data-copy="java -version">Copy</button></div>
+        </li>
+        <li class="step">
+          <h3>Run it once</h3>
+          <p>Open a terminal in the same folder and start the bot. It will create <code>config.yaml</code> and a few
+            other files, then you can stop it.</p>
+          <div class="code"><pre><code>java -jar main.jar</code></pre><button class="copy" type="button"
+              data-copy="java -jar main.jar">Copy</button></div>
+          <p class="note">On a hosting service, you can use this command or set main.jar as the startup file.</p>
+        </li>
+        <li class="step">
+          <h3>Add your token and start again</h3>
+          <p>Open <code>config.yaml</code> and paste in your <a
+              href="https://docs.discord.com/developers/bots/overview" target="_blank" rel="noopener">Discord bot's</a>
+            token and your bot's name. Other optional features are in the same file. Then run the command from step 2
+            again.</p>
+          <div class="code"><pre><code>token: "YOUR_BOT_TOKEN"
+bot-name: "My Bot"</code></pre><button class="copy" type="button"
+              data-copy='token: "YOUR_BOT_TOKEN"&#10;bot-name: "My Bot"'>Copy</button></div>
+        </li>
+      </ol>
     </section>
 
     <section id="details">
@@ -349,18 +558,23 @@
     <footer>Garnet</footer>
   </main>
   <script>
-    // Set this to the direct URL of your .jar file (for example a GitHub release asset).
     var JAR_URL = "https://github.com/GarnetDiscordBot/Garnet/releases/latest/download/main.jar";
     (function () {
       var dl = document.getElementById("dl");
       if (JAR_URL) { dl.href = JAR_URL; dl.removeAttribute("aria-disabled"); }
       else { dl.textContent = "Download link not set yet"; }
-      var b = document.getElementById("copy");
-      b.addEventListener("click", function () {
-        var t = document.getElementById("cmd").textContent;
-        try {
-          navigator.clipboard.writeText(t).then(function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1500); }, function () { b.textContent = "Select and copy"; });
-        } catch (e) { b.textContent = "Select and copy"; }
+
+      var buttons = document.querySelectorAll(".copy");
+      Array.prototype.forEach.call(buttons, function (b) {
+        b.addEventListener("click", function () {
+          var t = b.getAttribute("data-copy");
+          try {
+            navigator.clipboard.writeText(t).then(function () {
+              b.textContent = "Copied";
+              setTimeout(function () { b.textContent = "Copy"; }, 1500);
+            }, function () { b.textContent = "Select and copy"; });
+          } catch (e) { b.textContent = "Select and copy"; }
+        });
       });
     })();
   </script>
