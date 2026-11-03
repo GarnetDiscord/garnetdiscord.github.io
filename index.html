@@ -103,6 +103,34 @@
       align-items: center
     }
 
+    .policy-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 2rem 0 0
+    }
+
+    .policy-link {
+      color: var(--garnet);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .3rem .75rem;
+      font-size: .9rem;
+      line-height: 1.4;
+      text-decoration: none
+    }
+
+    .policy-link:hover {
+      border-color: var(--garnet);
+      background: var(--bg)
+    }
+
+    .policy-link:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 3px
+    }
+
     h1 {
       font-size: clamp(2.6rem, 7vw, 4.75rem);
       font-weight: 800;
@@ -177,6 +205,10 @@
       margin-top: 4rem;
       border-top: 1px solid var(--line);
       padding-top: 2rem
+    }
+
+    #run {
+      margin-top: 1.5rem
     }
 
     h2 {
@@ -266,15 +298,27 @@
     <div class="hero">
       <div>
         <h1>The Discord bot engine.</h1>
-        <p class="lede">Garnet is a Discord bot engine you run yourself. Download it, add your bot token, and switch features on or off in one config file. Tickets, role panels, logging, welcomer, moderation and embeds are included.</p>
+        <p class="lede">Garnet is a Discord bot engine you run yourself. Download it, add your bot token, and switch
+          features on or off in one config file. Tickets, role panels, logging, welcomer, moderation and embeds are
+          included.</p>
         <div class="hero-actions">
           <a class="btn" id="dl" href="#" target="_blank" rel="noopener" aria-disabled="true">Download main.jar</a>
-          <a class="btn btn-secondary" href="https://dsc.gg/garnetbot" target="_blank" rel="noopener">Join our Discord</a>
+          <a class="btn btn-secondary" href="https://dsc.gg/garnetbot" target="_blank" rel="noopener">Join our
+            Discord</a>
         </div>
         <p class="meta" id="meta">Version alpha_v1.0.0 · Requires Java 21 or newer</p>
       </div>
       <img class="gem" src="Garnet.png" alt="Garnet logo">
     </div>
+
+    <nav class="policy-links" aria-label="Policies">
+      <a class="policy-link" href="https://github.com/GarnetDiscord/Garnet/blob/main/TERMS.md" target="_blank"
+        rel="noopener">Terms of Service</a>
+      <a class="policy-link" href="https://github.com/GarnetDiscord/Garnet/blob/main/PRIVACY.md" target="_blank"
+        rel="noopener">Privacy Policy</a>
+      <a class="policy-link" href="https://github.com/GarnetDiscord/Garnet/blob/main/SECURITY.md" target="_blank"
+        rel="noopener">Security Policy</a>
+    </nav>
 
     <section id="run">
       <h2>Run it</h2>
@@ -305,6 +349,7 @@
     <footer>Garnet</footer>
   </main>
   <script>
+    // Set this to the direct URL of your .jar file (for example a GitHub release asset).
     var JAR_URL = "https://github.com/GarnetDiscordBot/Garnet/releases/latest/download/main.jar";
     (function () {
       var dl = document.getElementById("dl");
