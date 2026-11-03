@@ -5,6 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Garnet – bot engine</title>
+  <meta name="description" content="Garnet is a self-hosted Discord bot engine. Download one jar, add your bot token, and switch features on or off in a single config file.">
+  <meta name="theme-color" content="#F4EEEF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f0b0d" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Garnet – the Discord bot engine">
+  <meta property="og:description" content="Run your own Discord bot. Download it, add your bot token, and switch features on or off in one config file.">
+  <link rel="icon" type="image/png" href="Garnet.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -21,8 +28,9 @@
       --tint: #F6E4E8;
       --line: #E0D2D5;
       --on-garnet: #FFF;
-      --code-bg: #2B2326;
+      --code-bg: #000000;
       --code-ink: #F4E6E9;
+      color-scheme: light dark;
       box-sizing: border-box;
       padding-top: env(safe-area-inset-top, 0px);
       padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -30,36 +38,37 @@
 
     @media (prefers-color-scheme:dark) {
       :root:not([data-theme="light"]) {
-        --bg: #1C1316;
+        --bg: #0f0b0d;
         --surface: #271B1F;
         --ink: #F2E7EA;
         --muted: #B49CA2;
         --garnet: #e03050;
-        --garnet-hi: #da3651;
+        --garnet-hi: #ec4d68;
         --tint: #3A1F27;
         --line: #3B2A30;
-        --on-garnet: #1C1316;
-        --code-bg: #120C0E;
+        --on-garnet: #0f0b0d;
+        --code-bg: #000000;
         --code-ink: #F4E6E9
       }
     }
 
     :root[data-theme="dark"] {
-      --bg: #1C1316;
+      --bg: #0f0b0d;
       --surface: #271B1F;
       --ink: #F2E7EA;
       --muted: #B49CA2;
       --garnet: #e03050;
-      --garnet-hi: #da3651;
+      --garnet-hi: #ec4d68;
       --tint: #3A1F27;
       --line: #3B2A30;
-      --on-garnet: #1C1316;
+      --on-garnet: #0f0b0d;
       --code-bg: #120C0E;
       --code-ink: #F4E6E9
     }
 
     html {
-      scroll-padding-top: env(safe-area-inset-top, 0px)
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      -webkit-text-size-adjust: 100%
     }
 
     * {
@@ -70,7 +79,8 @@
       margin: 0;
       background: var(--bg);
       color: var(--ink);
-      font: 400 1.0625rem/1.6 "Source Sans 3", system-ui, sans-serif
+      font: 400 1.0625rem/1.6 "Source Sans 3", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased
     }
 
     main {
@@ -151,7 +161,8 @@
       font-size: clamp(2.6rem, 7vw, 4.75rem);
       font-weight: 800;
       letter-spacing: -.02em;
-      line-height: 1.05
+      line-height: 1.05;
+      text-wrap: balance
     }
 
     .lede {
@@ -164,12 +175,14 @@
     .gem {
       width: 100%;
       max-width: 19rem;
+      height: auto;
       justify-self: center
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: .6rem;
       background: var(--garnet);
       color: var(--on-garnet);
@@ -177,22 +190,24 @@
       padding: .9rem 1.6rem;
       border-radius: .4rem;
       text-decoration: none;
-      border: 0;
+      border: 1px solid var(--garnet);
       cursor: pointer
     }
 
     .btn:hover {
-      background: var(--garnet-hi)
+      background: var(--garnet-hi);
+      border-color: var(--garnet-hi)
     }
 
     .btn-secondary {
       background: var(--surface);
-      color: var(--garnet);
-      border: 1px solid var(--garnet)
+      color: var(--ink);
+      border-color: var(--garnet)
     }
 
     .btn-secondary:hover {
-      background: var(--bg)
+      background: var(--tint);
+      border-color: var(--garnet)
     }
 
     .hero-actions {
@@ -210,6 +225,15 @@
     .btn[aria-disabled="true"] {
       opacity: .55;
       pointer-events: none
+    }
+
+    @media (prefers-reduced-motion:no-preference) {
+
+      .btn,
+      .policy-link,
+      .copy {
+        transition: background-color .15s ease, border-color .15s ease
+      }
     }
 
     .meta {
@@ -345,6 +369,14 @@
       color: var(--garnet)
     }
 
+    .step code {
+      color: var(--ink);
+      background: var(--tint);
+      border-radius: .25rem;
+      padding: .1rem .35rem;
+      font: .92em ui-monospace, Menlo, Consolas, monospace
+    }
+
     .code {
       display: flex;
       align-items: flex-start;
@@ -365,8 +397,11 @@
       white-space: pre
     }
 
-    .code .c {
-      color: #A8939A
+    .code code {
+      background: none;
+      color: inherit;
+      padding: 0;
+      font: inherit
     }
 
     .copy {
@@ -380,10 +415,18 @@
       flex: none
     }
 
+    .copy:hover {
+      border-color: var(--code-ink)
+    }
+
     .note {
       margin: .8rem 0 0;
       font-size: .95rem;
       color: var(--muted)
+    }
+
+    .step .note {
+      margin: .8rem 0 0
     }
 
     dl {
@@ -404,10 +447,18 @@
       overflow-wrap: anywhere
     }
 
+    dd.hash {
+      font: .9rem/1.5 ui-monospace, Menlo, Consolas, monospace
+    }
+
     footer {
       margin-top: 4rem;
       color: var(--muted);
       font-size: .95rem
+    }
+
+    footer p {
+      margin: 0
     }
 
     @media (max-width:700px) {
@@ -420,6 +471,19 @@
         order: -1;
         justify-self: start
       }
+
+      .hero-actions .btn {
+        flex: 1 1 100%
+      }
+
+      dl {
+        grid-template-columns: 1fr;
+        gap: 0
+      }
+
+      dd {
+        margin-bottom: .75rem
+      }
     }
   </style>
 </head>
@@ -427,7 +491,7 @@
 <body>
   <main>
     <div class="top">
-      <img src="Garnet.png" alt="">
+      <img src="Garnet.png" alt="" width="26" height="26">
       Garnet
     </div>
 
@@ -438,13 +502,13 @@
         <p class="lede">Run your own Discord bot. Download it, add your bot token, and switch features on or off in one
           config file.</p>
         <div class="hero-actions">
-          <a class="btn" id="dl" href="#" target="_blank" rel="noopener" aria-disabled="true">Download main.jar</a>
+          <a class="btn" id="dl" href="#" aria-disabled="true">Download main.jar</a>
           <a class="btn btn-secondary" href="https://dsc.gg/garnetbot" target="_blank" rel="noopener">Join our
             Discord</a>
         </div>
         <p class="meta" id="meta">Version alpha_v1.0.0 · Requires Java 21 or newer</p>
       </div>
-      <img class="gem" src="Garnet.png" alt="Garnet logo">
+      <img class="gem" src="Garnet.png" alt="Garnet logo" width="304" height="304">
     </div>
 
     <nav class="policy-links" aria-label="Policies">
@@ -456,8 +520,8 @@
         rel="noopener">Security Policy</a>
     </nav>
 
-    <section id="features">
-      <h2>What's included</h2>
+    <section id="features" aria-labelledby="features-h">
+      <h2 id="features-h">What's included</h2>
       <p class="section-intro">Every feature can be turned on or off in your config file.</p>
       <ul class="cards">
         <li class="card">
@@ -505,39 +569,42 @@
       </ul>
     </section>
 
-    <section id="run">
-      <h2>Install in three steps</h2>
+    <section id="run" aria-labelledby="run-h">
+      <h2 id="run-h">Install in three steps</h2>
       <ol class="steps">
         <li class="step">
           <h3>Download and check Java</h3>
           <p>Download <strong>main.jar</strong> into its own folder. Garnet needs Java 21 or newer, so check your
             version first.</p>
           <div class="code"><pre><code>java -version</code></pre><button class="copy" type="button"
-              data-copy="java -version">Copy</button></div>
+              data-copy="java -version" aria-label="Copy command: java -version">Copy</button></div>
+          <p class="note">The version it prints should be 21 or higher.</p>
         </li>
         <li class="step">
           <h3>Run it once</h3>
           <p>Open a terminal in the same folder and start the bot. It will create <code>config.yaml</code> and a few
             other files, then you can stop it.</p>
           <div class="code"><pre><code>java -jar main.jar</code></pre><button class="copy" type="button"
-              data-copy="java -jar main.jar">Copy</button></div>
+              data-copy="java -jar main.jar" aria-label="Copy command: java -jar main.jar">Copy</button></div>
           <p class="note">On a hosting service, you can use this command or set main.jar as the startup file.</p>
         </li>
         <li class="step">
           <h3>Add your token and start again</h3>
           <p>Open <code>config.yaml</code> and paste in your <a
-              href="https://docs.discord.com/developers/bots/overview" target="_blank" rel="noopener">Discord bot's</a>
-            token and your bot's name. Other optional features are in the same file. Then run the command from step 2
-            again.</p>
+              href="https://docs.discord.com/developers/bots/overview" target="_blank" rel="noopener">Discord bot
+              token</a> and your bot's name. Other optional features are in the same file. Then run the command from
+            step 2 again.</p>
           <div class="code"><pre><code>token: "YOUR_BOT_TOKEN"
 bot-name: "My Bot"</code></pre><button class="copy" type="button"
-              data-copy='token: "YOUR_BOT_TOKEN"&#10;bot-name: "My Bot"'>Copy</button></div>
+              data-copy='token: "YOUR_BOT_TOKEN"&#10;bot-name: "My Bot"'
+              aria-label="Copy example config">Copy</button></div>
+          <p class="note">Keep your token private. Anyone who has it can control your bot.</p>
         </li>
       </ol>
     </section>
 
-    <section id="details">
-      <h2>Release details</h2>
+    <section id="details" aria-labelledby="details-h">
+      <h2 id="details-h">Release details</h2>
       <dl>
         <dt>Version</dt>
         <dd>alpha_v1.0.0</dd>
@@ -545,17 +612,19 @@ bot-name: "My Bot"</code></pre><button class="copy" type="button"
         <dd>main.jar</dd>
         <dt>Java</dt>
         <dd>21 or newer</dd>
-        <dt>Checksum</dt>
-        <dd>7df66ecea0900b0726c66c6dc034098c6725b35e7c0dcbe3a58f76a2da994f7a</dd>
+        <dt>SHA-256</dt>
+        <dd class="hash">7df66ecea0900b0726c66c6dc034098c6725b35e7c0dcbe3a58f76a2da994f7a</dd>
       </dl>
     </section>
 
-    <section id="more">
-      <h2>Other formats</h2>
+    <section id="more" aria-labelledby="more-h">
+      <h2 id="more-h">Other formats</h2>
       <p>The .jar is the only download for now. Other packages will be listed here when they are available.</p>
     </section>
 
-    <footer>Garnet</footer>
+    <footer>
+      <p>Garnet is an independent project and is not affiliated with or endorsed by Discord.</p>
+    </footer>
   </main>
   <script>
     var JAR_URL = "https://github.com/GarnetDiscordBot/Garnet/releases/latest/download/main.jar";
@@ -564,16 +633,20 @@ bot-name: "My Bot"</code></pre><button class="copy" type="button"
       if (JAR_URL) { dl.href = JAR_URL; dl.removeAttribute("aria-disabled"); }
       else { dl.textContent = "Download link not set yet"; }
 
+      function flash(b, text) {
+        b.textContent = text;
+        setTimeout(function () { b.textContent = "Copy"; }, 1800);
+      }
+
       var buttons = document.querySelectorAll(".copy");
       Array.prototype.forEach.call(buttons, function (b) {
         b.addEventListener("click", function () {
           var t = b.getAttribute("data-copy");
           try {
             navigator.clipboard.writeText(t).then(function () {
-              b.textContent = "Copied";
-              setTimeout(function () { b.textContent = "Copy"; }, 1500);
-            }, function () { b.textContent = "Select and copy"; });
-          } catch (e) { b.textContent = "Select and copy"; }
+              flash(b, "Copied");
+            }, function () { flash(b, "Select and copy"); });
+          } catch (e) { flash(b, "Select and copy"); }
         });
       });
     })();
