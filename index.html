@@ -5,12 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Garnet – bot engine</title>
-  <meta name="description" content="Garnet is a self-hosted Discord bot engine. Download one jar, add your bot token, and switch features on or off in a single config file.">
+  <meta name="description"
+    content="Garnet is a self-hosted Discord bot engine. Download one jar, add your bot token, and switch features on or off in a single config file.">
   <meta name="theme-color" content="#F4EEEF" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f0b0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Garnet – the Discord bot engine">
-  <meta property="og:description" content="Run your own Discord bot. Download it, add your bot token, and switch features on or off in one config file.">
+  <meta property="og:title" content="Garnet - the Discord bot engine">
+  <meta property="og:description"
+    content="Run your own Discord bot. Download it, add your bot token, and switch features on or off in one config file.">
   <link rel="icon" type="image/png" href="Garnet.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +30,7 @@
       --tint: #F6E4E8;
       --line: #E0D2D5;
       --on-garnet: #FFF;
-      --code-bg: #000000;
+      --code-bg: #0f0b0d;
       --code-ink: #F4E6E9;
       color-scheme: light dark;
       box-sizing: border-box;
@@ -38,7 +40,7 @@
 
     @media (prefers-color-scheme:dark) {
       :root:not([data-theme="light"]) {
-        --bg: #0f0b0d;
+        --bg: #000000;
         --surface: #271B1F;
         --ink: #F2E7EA;
         --muted: #B49CA2;
@@ -46,14 +48,14 @@
         --garnet-hi: #ec4d68;
         --tint: #3A1F27;
         --line: #3B2A30;
-        --on-garnet: #0f0b0d;
-        --code-bg: #000000;
+        --on-garnet: #000000;
+        --code-bg: #0f0b0d;
         --code-ink: #F4E6E9
       }
     }
 
     :root[data-theme="dark"] {
-      --bg: #0f0b0d;
+      --bg: #000000;
       --surface: #271B1F;
       --ink: #F2E7EA;
       --muted: #B49CA2;
@@ -61,7 +63,7 @@
       --garnet-hi: #ec4d68;
       --tint: #3A1F27;
       --line: #3B2A30;
-      --on-garnet: #0f0b0d;
+      --on-garnet: #000000;
       --code-bg: #120C0E;
       --code-ink: #F4E6E9
     }
@@ -503,10 +505,11 @@
           config file.</p>
         <div class="hero-actions">
           <a class="btn" id="dl" href="#" aria-disabled="true">Download main.jar</a>
-          <a class="btn btn-secondary" href="https://discord.com/invite/ER6RB2w9jS" target="_blank" rel="noopener">Join our
+          <a class="btn btn-secondary" href="https://discord.com/invite/ER6RB2w9jS" target="_blank" rel="noopener">Join
+            our
             Discord</a>
         </div>
-        <p class="meta" id="meta">Version alpha_v1.2.0 · Requires Java 21 or newer</p>
+        <p class="meta" id="meta">Version alpha_v1.0.0 · Requires Java 21 or newer</p>
       </div>
       <img class="gem" src="Garnet.png" alt="Garnet logo" width="304" height="304">
     </div>
@@ -526,42 +529,61 @@
       <ul class="cards">
         <li class="card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+              <path d="M13 5v2M13 11v2M13 17v2" />
+            </svg>
           </div>
           <h3>Tickets</h3>
           <p>Let members open private support channels, with limits and delete confirmation.</p>
         </li>
         <li class="card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.42 0l7.58-7.58a1 1 0 0 0 0-1.42Z"/><circle cx="7" cy="7" r="1"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.42 0l7.58-7.58a1 1 0 0 0 0-1.42Z" />
+              <circle cx="7" cy="7" r="1" />
+            </svg>
           </div>
           <h3>Role panels</h3>
           <p>Members pick their own roles from a panel you build right inside Discord.</p>
         </li>
         <li class="card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+            </svg>
           </div>
           <h3>Logging</h3>
           <p>Keep a record of joins, edits, deletions and other server activity.</p>
         </li>
         <li class="card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+            </svg>
           </div>
           <h3>Welcomer</h3>
           <p>Greet new members with a message of your own.</p>
         </li>
         <li class="card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+            </svg>
           </div>
           <h3>Moderation</h3>
           <p>Keep your server in order with the usual tools for dealing with rule-breakers.</p>
         </li>
         <li class="card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
           </div>
           <h3>Embeds</h3>
           <p>Send polished, formatted messages and announcements.</p>
@@ -576,28 +598,33 @@
           <h3>Download and check Java</h3>
           <p>Download <strong>main.jar</strong> into its own folder. Garnet needs Java 21 or newer, so check your
             version first.</p>
-          <div class="code"><pre><code>java -version</code></pre><button class="copy" type="button"
-              data-copy="java -version" aria-label="Copy command: java -version">Copy</button></div>
+          <div class="code">
+            <pre><code>java -version</code></pre><button class="copy" type="button" data-copy="java -version"
+              aria-label="Copy command: java -version">Copy</button>
+          </div>
           <p class="note">The version it prints should be 21 or higher.</p>
         </li>
         <li class="step">
           <h3>Run it once</h3>
           <p>Open a terminal in the same folder and start the bot. It will create <code>config.yaml</code> and a few
             other files, then you can stop it.</p>
-          <div class="code"><pre><code>java -jar main.jar</code></pre><button class="copy" type="button"
-              data-copy="java -jar main.jar" aria-label="Copy command: java -jar main.jar">Copy</button></div>
+          <div class="code">
+            <pre><code>java -jar main.jar</code></pre><button class="copy" type="button" data-copy="java -jar main.jar"
+              aria-label="Copy command: java -jar main.jar">Copy</button>
+          </div>
           <p class="note">On a hosting service, you can use this command or set main.jar as the startup file.</p>
         </li>
         <li class="step">
           <h3>Add your token and start again</h3>
-          <p>Open <code>config.yaml</code> and paste in your <a
-              href="https://docs.discord.com/developers/bots/overview" target="_blank" rel="noopener">Discord bot
+          <p>Open <code>config.yaml</code> and paste in your <a href="https://docs.discord.com/developers/bots/overview"
+              target="_blank" rel="noopener">Discord bot
               token</a> and your bot's name. Other optional features are in the same file. Then run the command from
             step 2 again.</p>
-          <div class="code"><pre><code>token: "YOUR_BOT_TOKEN"
+          <div class="code">
+            <pre><code>token: "YOUR_BOT_TOKEN"
 bot-name: "My Bot"</code></pre><button class="copy" type="button"
-              data-copy='token: "YOUR_BOT_TOKEN"&#10;bot-name: "My Bot"'
-              aria-label="Copy example config">Copy</button></div>
+              data-copy='token: "YOUR_BOT_TOKEN"&#10;bot-name: "My Bot"' aria-label="Copy example config">Copy</button>
+          </div>
           <p class="note">Keep your token private. Anyone who has it can control your bot.</p>
         </li>
       </ol>
@@ -613,7 +640,7 @@ bot-name: "My Bot"</code></pre><button class="copy" type="button"
         <dt>Java</dt>
         <dd>21 or newer</dd>
         <dt>SHA-256</dt>
-        <dd class="hash">c40e548e2bd94ec778854bc30f1dcc26d8b69573fd0266f965f48b26a2197964</dd>
+        <dd class="hash">88ae6dd23f859bf6f799400297173441dcb51102f9d77422a02f5c3705875640</dd>
       </dl>
     </section>
 
@@ -627,7 +654,7 @@ bot-name: "My Bot"</code></pre><button class="copy" type="button"
     </footer>
   </main>
   <script>
-    var JAR_URL = "https://github.com/GarnetDiscord/Garnet/releases/latest/download/main.jar";
+    var JAR_URL = "https://github.com/EnderKnight7op/Garnet/releases/latest/download/main.jar";
     (function () {
       var dl = document.getElementById("dl");
       if (JAR_URL) { dl.href = JAR_URL; dl.removeAttribute("aria-disabled"); }
